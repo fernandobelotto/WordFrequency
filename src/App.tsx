@@ -31,17 +31,23 @@ export default function App() {
     }
   }, []);
 
+  // TODO: check corner cases!
   function getStats() {
     const clearText = text?.trimEnd().trimStart();
 
     let numberOfWords = clearText?.split(" ").length;
+    let numberOfSenteces = clearText?.split(". ").length;
+    let numberOfParagraphs = clearText?.split("\n").length;
+
     if (clearText?.length === 0) {
       numberOfWords = 0;
+      numberOfSenteces = 0;
+      numberOfParagraphs = 0;
     }
     setStats({
       numberOfWords,
-      numberOfSenteces: clearText?.split(". ").length,
-      numberOfParagraphs: clearText?.split("\n").length,
+      numberOfSenteces,
+      numberOfParagraphs,
     });
   }
 
